@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
+import VCharts from 'v-charts'
+
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-import { Button, Select } from 'element-ui';
+import './element'
 
-Vue.use(Button)
-Vue.use(Select)
+Vue.use(VCharts)
+
 
 Vue.config.productionTip = false
 
