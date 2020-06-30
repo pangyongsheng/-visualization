@@ -1,13 +1,13 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-06-18 15:54:06
- * @LastEditTime : 2020-06-18 17:54:25
+ * @LastEditTime : 2020-06-29 15:20:55
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\d3\d3.vue
 --> 
 <template>
-  <div>
+  <div id="warp">
     <p>dog</p>
     <p>cat</p>
     <p>pig</p>
@@ -23,26 +23,24 @@ export default {
     return {};
   },
   mounted() {
-        var dataset = [ 10  ];
+        var dataset = [ 10,2 ]; 
+        dataset = [ 10,2 ,3,3,3 ]; 
 
-        var update = d3.select("body").selectAll("p").data(dataset);
-        var enter  = update;
-        var exit  = update;
+
+        var update = d3.select("#warp").selectAll("p").data(dataset);
+        var enter  = update.enter();
+        var exit  = update.exit();
 
         update.text(function(d,i){
-			return "update " + d;
+			    return "update " + d;
         });
 
-        exit.exit()
-			 .text(function(d,i){
-				return "exit";
-
-             })
-        // enter.enter()
-        //     .append("i")
-        //     .text(function(d,i){
-        //         return "enter " + d;
-        //     });
+        // exit.text(function(d,i){
+				//   return "exit";
+        // })
+        
+        console.log(enter)
+        enter.append("p").text(function(d){ return d; });
   }
 };
 </script>

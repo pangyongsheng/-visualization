@@ -1,3 +1,11 @@
+<!--
+ * @Author       : your name
+ * @Date         : 2020-04-09 11:33:59
+ * @LastEditTime : 2020-06-30 15:48:08
+ * @LastEditors  : your name
+ * @Description  : In User Settings Edit
+ * @FilePath     : \vd\src\App.vue
+--> 
 <template>
   <div id="app">
         <el-container>
@@ -54,5 +62,5 @@ table {
   border-spacing: 0;
 }
 /* custom */
-
+.el-aside::-webkit-scrollbar {display:none}
 </style>

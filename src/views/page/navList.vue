@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-04-20 17:53:45
- * @LastEditTime : 2020-06-18 15:57:05
+ * @LastEditTime : 2020-06-30 15:46:28
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\page\navList.vue
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import dList from '@/config/d3.js'
 export default {
     name: "",
     props: [""],
@@ -68,17 +69,7 @@ export default {
                 {name:'饼图', path: 'e4'},
                 {name:'环图', path: 'e5'},
             ],
-            d3List:[
-                {name:'d1', path: 'd1'},
-                {name:'d2', path: 'd2'},
-                {name:'d3', path: 'd3'},
-                {name:'d4', path: 'd4'},
-                {name:'d5', path: 'd5'},
-                {name:'d6', path: 'd6'},
-                {name:'d7', path: 'd7'},
-                {name:'d8', path: 'd8'},
-                {name:'d9', path: 'd9'},
-            ],
+            d3List: dList,
         };
     },
     components: {},

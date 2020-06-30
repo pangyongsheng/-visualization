@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-06-18 15:54:06
- * @LastEditTime : 2020-06-18 18:49:16
+ * @LastEditTime : 2020-06-30 15:52:54
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\d3\d3.vue
@@ -28,6 +28,12 @@ export default {
       .domain([0,d3.max(dataset)])
       .range([0, 300])
 
+    var index = [0,1,2,3,4];
+    var color = ["red","blue","yellow","black","green"];
+    var scaleOrdinal = d3.scaleOrdinal()
+    		.domain(index)
+    		.range(color);
+
     var svg = d3.select("svg"); //得到svg画布
     var g = svg
       .append("g") //定义一个用来装整个图表的一个分组，并设置他的位置
@@ -49,7 +55,10 @@ export default {
         return scaleLinear(d);
       })
       .attr("height", rectHeight - 5) //设置长
-      .attr("fill", "blue"); //颜色填充
+      .attr("fill", function(d, i) {
+        //设置左上点的y
+        return scaleOrdinal(i);
+      }); //颜色填充
 
 
       //坐标轴
@@ -58,7 +67,7 @@ export default {
         .range([0, 300])
 
       var xAxis = d3.axisBottom(xScale)
-        .ticks(6)
+        .ticks(10)
       
       g.append('g')
         .attr("transform", "translate("+20+","+(dataset.length*rectHeight)+")")
