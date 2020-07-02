@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-04-09 11:33:59
- * @LastEditTime : 2020-06-18 17:26:15
+ * @LastEditTime : 2020-07-01 15:14:47
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\.eslintrc.js
@@ -25,6 +25,7 @@ module.exports = {
     'no-mixed-spaces-and-tabs': 0,
     'indent': ["off", "tab"],
     'no-trailing-spaces': 0,
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    "no-irregular-whitespace":"off"//这禁止掉 空格报错检查
   }
 }

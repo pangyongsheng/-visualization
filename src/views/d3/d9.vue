@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-06-18 15:54:06
- * @LastEditTime : 2020-06-30 16:15:44
+ * @LastEditTime : 2020-07-01 15:15:04
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\d3\d3.vue
@@ -29,11 +29,20 @@ export default {
       const dom = this.$refs.dom;
       new DragArc({
         el: dom,
-        value: 10,
         startDeg: 0.5,
         endDeg: 2.5,
+        innerColor: "#585858",
+        outColor: "#00695C",
+        innerLineWidth: 1,
+        outLineWidth: 14,
+        counterclockwise: true,
+        slider: 10,
+        color: ["#FF9400", "#FFEC00"],
+        sliderColor: "#A69900",
+        sliderBorderColor: "#FFEC00",
+        value: 0,
+        textShow: true,
         change: v => {
-          console.log(v);
         }
       });
     }
