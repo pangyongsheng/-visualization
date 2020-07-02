@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-06-30 15:27:57
- * @LastEditTime : 2020-06-30 18:17:52
+ * @LastEditTime : 2020-07-02 15:17:22
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\config\d3.js
@@ -18,6 +18,7 @@ export default [
     {name:'d9', path: 'd9'},
     {name:'折线图', path: 'd10'},
     {name:'d11', path: 'd11'},
-    {name:'d12', path: 'd12'},
-    {name:'d13', path: 'd13'},
+    {name:'雷达图', path: 'd12'},
+    {name:'散点图', path: 'd13'},
+    {name:'气泡图', path: 'd14'},
 ]
