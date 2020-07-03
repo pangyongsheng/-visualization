@@ -1,8 +1,8 @@
 /*
  * @Author       : your name
  * @Date         : 2020-04-09 11:33:59
- * @LastEditTime : 2020-06-18 15:50:01
- * @LastEditors  : your name
+ * @LastEditTime : 2020-07-03 18:35:09
+ * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\router\index.js
  */ 
@@ -12,6 +12,7 @@ import Home from '../views/Home.vue'
 
 import RouterEchart from './rechart'
 import RouterD3 from './rd3'
+import RouterWebGL from './rwebgl'
 
 Vue.use(VueRouter)
 
@@ -35,8 +36,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   ...RouterEchart,
-  ...RouterD3
+  ...RouterD3,
+  ...RouterWebGL
 ]
+
+console.log(routes)
 
 const router = new VueRouter({
   mode: 'history',
