@@ -1,14 +1,15 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-03 18:30:01
- * @LastEditTime : 2020-07-08 18:53:31
+ * @LastEditTime : 2020-07-09 18:49:50
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\webgl\t1.vue
 --> 
 <template>
   <div id="t1">
-    <canvas id="t1" width="500" height="500" ref="thr"></canvas>
+    <canvas width="500" height="500" ref="thr"></canvas>
+    <button @click="stop"></button>
   </div>
 </template>
 
@@ -19,19 +20,32 @@ export default {
   props: [""],
   data() {
     return {
-      lastTime: 0,
       radius: 300,
-      clock: null
+      clock: null,
+      start: [-160,40],
+      destination: [
+        [-170,55.45],
+        [-77.02182,38.53707],
+        [149.07,-35.17],
+        [-47.56,-15.47],
+        [18,-34],
+        [139.6932, 35.6898],
+        [-75.43, 45.25]
+      ],
+      posTracks: []
     };
   },
 
   mounted() {
     this.init();
-    //this.renderer.render(this.scene, this.camera);
   },
 
   methods: {
+    stop() {
+      window.cancelAnimationFrame(this.Anima);
+    },
     init() {
+      const _this = this;
       // 渲染器
       this.renderer = new THREE.WebGLRenderer({
         canvas: this.$refs.thr
@@ -42,34 +56,43 @@ export default {
       this.scene = new THREE.Scene();
 
       // 相机
-      this.camera = new THREE.PerspectiveCamera(45, 500 / 500, 1, 1000);
-      this.camera.position.set(0, 100, -900);
+      this.camera = new THREE.PerspectiveCamera(45, 500 / 500, 1, 1500);
+      this.camera.position.set(100, 100, 1000);
       this.camera.lookAt(new THREE.Vector3(0, 0, 0));
-      // 将相机添加到场景中
       this.scene.add(this.camera);
+      
+      // 添加光照
+      this.light();
 
+      // 创建编组
       this.group = new THREE.Group();
       this.groupBall = new THREE.Group();
+
+      //声明一个时钟对象
+      this.clock = new THREE.Clock();
+      
+      this.x = new THREE.Vector3(1, 0 ,0);
+      this.y = new THREE.Vector3(0, 1 ,0);
+      this.z = new THREE.Vector3(0, 0 ,1);
+
+      this.drawEarth();
+
+
 
       let axisHelper = new THREE.AxesHelper(250);
       this.scene.add(axisHelper);
 
-      this.light();
+      
+      this.drawPoint(this.getPosition(this.start[0], this.start[1], this.radius+3))
+     
 
-      this.clock = new THREE.Clock(); //声明一个时钟对象
+      this.destination.forEach((ele, index) => {
+        let pos = this.getPosition(ele[0], ele[1], this.radius+3)
+        this.drawPoint(pos)
+        this.drawLine(this.start[0], this.start[1], ele[0], ele[1], index)
+      })
 
-      this.draw();
-
-      // this.drawLine(0.4, 0.7, 0.6, 0.9);
-      // this.drawLine(0.4, 0.7, 0.5, 0.7);
-      // this.drawLine(0.4, 0.7, 0.4, 1);
-      // this.drawLine(0.4, 0.7, 0.1, 0.8);
-
-      //   this.drawLine(116.4551,40.1439, 37.35,55.45);
-      this.drawLine(116.4551,40.1439, 37.35,55.45);
-      this.drawLine(116.4551, 40.1439, 0.5, 51.3);
-
-      this.drawPoints();
+     
     },
     // 光照
     light() {
@@ -77,18 +100,16 @@ export default {
       light.position.set(0, 0, 200);
       this.scene.add(light);
     },
-    draw() {
+    // 绘制地球
+    drawEarth() {
       const _this = this;
-      // 球体
-      let geometry = new THREE.SphereGeometry(this.radius, 100, 100);
-      // 纹理贴图
-      let textureLoader = new THREE.TextureLoader();
-      let texture = textureLoader.load(require("@/assets/map.jpg"), texture => {
-        let material = new THREE.MeshLambertMaterial({
+      const geometry = new THREE.SphereGeometry(this.radius, 100, 100);// 球体
+      const textureLoader = new THREE.TextureLoader(); // 纹理贴图
+      const texture = textureLoader.load(require("@/assets/map.jpg"), texture => {
+        const material = new THREE.MeshLambertMaterial({
           map: texture,
           transparent: true,
-          // 设置材质透明度
-          opacity: 0.8
+          opacity: 1
         });
         let mesh = new THREE.Mesh(geometry, material);
         _this.group.add(mesh);
@@ -96,7 +117,7 @@ export default {
       });
     },
     // 绘制球面曲线
-    drawLine(longitude, latitude, longitude2, latitude2) {
+    drawLine(longitude, latitude, longitude2, latitude2, index) {
       let geometry = new THREE.Geometry(); //声明一个几何体对象Geometry
 
       let v0 = this.getPosition(longitude, latitude, this.radius);
@@ -122,24 +143,24 @@ export default {
 
       this.group.add(line);
 
-      this.sport(curvePoints);
+      this.sport(curvePoints, index);
     },
-    drawSportPoint(position) {
+    drawSportPoint(position, name) {
       let box = new THREE.SphereGeometry(6, 6, 6);
       let material = new THREE.MeshLambertMaterial({
         color: 0xff7e41
       }); //材质对象
       let mesh = new THREE.Mesh(box, material);
 
-      mesh.name = 'Ball'
+      mesh.name = name
       mesh.position.set(position.x, position.y, position.z);
       this.groupBall.add(mesh);
       this.group.add(this.groupBall)
       return mesh;
       
     },
-    sport(curvePoints) {
-      const Ball = this.drawSportPoint(curvePoints[0]);
+    sport(curvePoints ,index) {
+      const Ball = this.drawSportPoint(curvePoints[0], `Ball${index}`);
       let arr = Array.from(Array(101), (v, k) => k);
       // 生成一个时间序列
       let times = new Float32Array(arr);
@@ -151,21 +172,26 @@ export default {
       // 创建一个和时间序列相对应的位置坐标系列
       let values = new Float32Array(posArr);
       // 创建一个帧动画的关键帧数据，曲线上的位置序列对应一个时间序列
-      let posTrack = new THREE.KeyframeTrack("Ball.position", times, values);
+      let posTrack = new THREE.KeyframeTrack(`Ball${index}.position`, times, values);
+      this.posTracks.push(posTrack)
+      if(index == this.destination.length-1 ){
+        this.inputAnimate()
+      }
+    },
+    inputAnimate(){
       let duration = 101;
-      let clip = new THREE.AnimationClip("default", duration, [posTrack]);
+      let clip = new THREE.AnimationClip("default", duration, this.posTracks);
       this.mixer = new THREE.AnimationMixer(this.groupBall);
       let AnimationAction = this.mixer.clipAction(clip);
-      AnimationAction.timeScale = 20;
+      AnimationAction.timeScale = 30;
       AnimationAction.play();
-      //console.log(this.clock.getDelta())
     },
     getBezierPoint(v0, v3) {
       // 计算向量夹角
       let angle = (v0.angleTo(v3) * 180) / Math.PI; // 0 ~ Math.PI
 
-      let aLen = angle * 2,
-        hLen = angle * angle * 5;
+      let aLen = angle * 2.5,
+        hLen = angle * angle * 50;
 
       let p0 = new THREE.Vector3(0, 0, 0);
       // 法线向量
@@ -181,69 +207,98 @@ export default {
         v2: v2
       };
     },
-
     //  求的中点
     getVCenter(v1, v2) {
       let v = v1.add(v2);
       return v.divideScalar(2);
     },
-
     // 计算V1，V2向量固定长度的点
     getLenVcetor(v1, v2, len) {
       let v1v2Len = v1.distanceTo(v2);
       return v1.lerp(v2, len / v1v2Len);
     },
-
     // 经纬度转化为坐标
-    getPosition(longitude, latitude, radius) {
-      // 将经度，纬度转换为rad坐标
+    getPosition(longitude, latitude, radius = this.radius) {
+      // 经度，纬度转换为坐标
       let lg = THREE.Math.degToRad(longitude);
       let lt = THREE.Math.degToRad(latitude);
-      let temp = radius * Math.cos(lt);
       // 获取x，y，z坐标
+      let temp = radius * Math.cos(lt);
       let x = temp * Math.sin(lg);
       let y = radius * Math.sin(lt);
       let z = temp * Math.cos(lg);
-
       return new THREE.Vector3(x, y, z);
     },
-    // 绘制沿轨迹运动小球
-    drawPoints() {
+    // 绘制点
+    drawPoint(pos) {
+
+      let groupPoint = new THREE.Group();
+      //console.log(pos)
       const r = 10;
-      let dotGeo = new THREE.SphereGeometry(r, 10, 10);
-      let dotMater = new THREE.MeshPhongMaterial({
-        color: "#0ff"
-      });
-      let dotMesh = new THREE.Mesh(dotGeo, dotMater);
-      let pos = this.getSpherePoint(
-        this.radius,
-        Math.PI * 2 * Math.random(),
-        Math.PI * 2 * Math.random()
-      );
-      dotMesh.position.set(pos.x, pos.y, pos.z);
-      this.group.add(dotMesh);
-    },
-    // 获取球面坐标
-    getSpherePoint(r, a, b) {
-      let x = r * Math.sin(a) * Math.cos(b);
-      let y = r * Math.sin(a) * Math.sin(b);
-      let z = r * Math.cos(a);
-      return new THREE.Vector3(x, y, z);
+      let geometryLine = new THREE.Geometry(); 
+      let arc = new THREE.ArcCurve(0, 0, r, 0, 2 * Math.PI);
+      let points = arc.getPoints(40);
+
+      let zDeg = pos.angleTo(this.z);
+      let xDeg = pos.angleTo(this.x);
+      let yDeg = pos.angleTo(this.y);
+
+      console.log(zDeg,xDeg)
+
+      let spherical = new THREE.Spherical;
+      spherical.setFromCartesianCoords(pos.x, pos.y, pos.z)
+      console.log(spherical)
+
+
+
+      geometryLine.setFromPoints(points);
+      let LineMateri = new THREE.LineBasicMaterial({color: 0xff7e41});
+      let line = new THREE.Line(geometryLine, LineMateri);
+      
+      let shapePoint =  new THREE.Shape();
+      shapePoint.absarc( 0, 0, r-4, 0 ,2*Math.PI, false );
+      let arcGeometry = new THREE.ShapeGeometry(shapePoint);
+      let arcMaterial = new THREE.MeshBasicMaterial({color:0xff0000});
+      let point  = new THREE.Mesh(arcGeometry,arcMaterial);
+     
+
+    //  let color1 = new THREE.Color(0x444444),
+    //             color2 = new THREE.Color(0xff0000);
+    //   let geometry = new THREE.Geometry();
+    //   let material = new THREE.LineBasicMaterial({
+    //       // 使用顶点颜色
+    //       vertexColors: true
+    //   });
+    //   let p0 = new THREE.Vector3(0, 0, 0);
+    //   geometry.vertices.push(p0);
+    //   geometry.vertices.push(pos);
+    //   geometry.colors.push(color1, color2);
+    //   let line2 = new THREE.Line(geometry, material, THREE.LineSegments);
+    //   this.group.add(line2)
+
+      groupPoint.add(line);
+      groupPoint.add(point);
+      // groupPoint.rotateZ(xDeg)
+      // groupPoint.rotateX(zDeg)
+      groupPoint.position.set(pos.x, pos.y, pos.z);
+
+      this.group.add(groupPoint)
+      
     },
 
+    // 渲染
     render() {
       this.scene.add(this.group);
       this.renderer.render(this.scene, this.camera);
     },
+    // 动画
     animate() {
-      let time = new Date().getTime();
-      let timeDiff = time - this.lastTime;
-      this.lastTime = time;
-      let angleChange = (0.02 * timeDiff * 2 * Math.PI) / 750;
-      this.group.rotateY(angleChange);
       this.render();
-      requestAnimationFrame(this.animate);
-      this.mixer.update(this.clock.getDelta());
+      this.Anima = requestAnimationFrame(this.animate);
+      let time = this.clock.getDelta()
+      this.group.rotateY(time * Math.PI / 8);
+      // console.log(time)
+      this.mixer.update(time);
     }
   }
 };

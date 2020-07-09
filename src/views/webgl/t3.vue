@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-03 18:30:01
- * @LastEditTime : 2020-07-08 18:08:53
+ * @LastEditTime : 2020-07-09 10:17:47
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\webgl\t1.vue
@@ -236,7 +236,6 @@ export default {
     render() {
       this.scene.add(this.group);
       this.renderer.render(this.scene, this.camera);
-      this.mixer.update();
     },
     animate() {
       let time = new Date().getTime();
