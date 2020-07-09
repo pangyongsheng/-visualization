@@ -79,19 +79,19 @@ export default {
         .attr("height", function(d) {
           return height - marge.top - marge.bottom - yScale(d);
         })
-        .attr("fill", "blue")
+        .attr("fill", "#48D1CC")
         .on("mouseover",function(){
     			var rect = d3.select(this)
     				.transition()
     				.duration(1500)
-    				.attr("fill","yellow");
+    				.attr("fill","#008B8B");
     		})
     		.on("mouseout",function(){
     			var rect = d3.select(this)
     				.transition()
     				.delay(1500)
     				.duration(1500)
-    				.attr("fill","blue");
+    				.attr("fill","#48D1CC");
     		});
       // 绘制文字
       gs.append("text")
@@ -167,7 +167,7 @@ export default {
           //这里要改变，即初始状态
           return 0;
         })
-        .attr("fill", "blue")
+        .attr("fill", "#48D1CC")
         .transition() //添加过渡
         .duration(2000) //持续时间
         .delay(function(d, i) {

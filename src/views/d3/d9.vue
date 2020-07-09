@@ -8,6 +8,10 @@
 --> 
 <template>
   <div>
+    <div class="c">
+        <p>可拖动滑块组件</p>
+        <a href="https://github.com/pangyongsheng/canvas-arc-draw">详情查看</a>
+    </div>
     <div class="a" style="width:400px" ref="dom"></div>
   </div>
 </template>
@@ -31,16 +35,16 @@ export default {
         el: dom,
         startDeg: 0.5,
         endDeg: 2.5,
-        innerColor: "#585858",
-        outColor: "#00695C",
+        // innerColor: "#585858",
+        // outColor: "#00695C",
         innerLineWidth: 1,
         outLineWidth: 14,
         counterclockwise: true,
         slider: 10,
-        color: ["#FF9400", "#FFEC00"],
-        sliderColor: "#A69900",
-        sliderBorderColor: "#FFEC00",
-        value: 0,
+        // color: ["#FF9400", "#FFEC00"],
+        // sliderColor: "#A69900",
+        // sliderBorderColor: "#FFEC00",
+        value: 38,
         textShow: true,
         change: v => {
         }

@@ -7,9 +7,9 @@
  * @FilePath     : \vd\src\config\d3.js
  */ 
 export default [
-    {name:'t1', path: 't1'},
-    {name:'t2', path: 't2'},
-    {name:'t3', path: 't3'},
-    {name:'t4', path: 't4'},
-    {name:'t5', path: 't5'},
+    {name:'立方体测试', path: 't1'},
+    // {name:'t2', path: 't2'},
+    // {name:'t3', path: 't3'},
+    {name:'地球动画', path: 't4'},
+    //{name:'t5', path: 't5'},
 ]

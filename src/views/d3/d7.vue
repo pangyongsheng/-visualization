@@ -33,7 +33,7 @@ export default {
         .append("g")
         .attr("transform", "translate(" + marge.top + "," + marge.left + ")");
 
-      var dataset = [30, 10, 43, 55, 13]; //数据
+      var dataset = [32, 10, 43, 55, 40]; //数据
 
       //设置一个color的颜色比例尺，为了让不同的扇形呈现不同的颜色
       var colorScale = d3
