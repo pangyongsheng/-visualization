@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-04-09 11:33:59
- * @LastEditTime : 2020-07-03 18:35:09
+ * @LastEditTime : 2020-07-13 14:35:35
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\router\index.js
@@ -13,6 +13,7 @@ import Home from '../views/Home.vue'
 import RouterEchart from './rechart'
 import RouterD3 from './rd3'
 import RouterWebGL from './rwebgl'
+import RouterAL from './algorithm'
 
 Vue.use(VueRouter)
 
@@ -37,7 +38,8 @@ const routes = [
   },
   ...RouterEchart,
   ...RouterD3,
-  ...RouterWebGL
+  ...RouterWebGL,
+  ...RouterAL
 ]
 
 console.log(routes)

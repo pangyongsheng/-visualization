@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-04-20 17:53:45
- * @LastEditTime : 2020-07-03 18:36:46
+ * @LastEditTime : 2020-07-13 14:37:20
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\page\navList.vue
@@ -19,6 +19,7 @@
           text-color="#fff"
           active-text-color="#ffd04b"
         >
+          <!-- d3 -->
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-menu"></i>
@@ -32,6 +33,7 @@
               <!-- <el-menu-item index="1-2">选项2</el-menu-item> -->
             </el-menu-item-group>
           </el-submenu>
+          <!-- webgl -->
 					<el-submenu index="2">
             <template slot="title">
               <i class="el-icon-menu"></i>
@@ -45,17 +47,27 @@
               <!-- <el-menu-item index="1-2">选项2</el-menu-item> -->
             </el-menu-item-group>
           </el-submenu>
+          <!-- echart -->
           <el-submenu index="3">
             <template slot="title">
               <i class="el-icon-menu"></i>
               <span>echart</span>
             </template>
             <el-menu-item-group>
-              <!-- <template slot="title">基本统计图</template> -->
               <el-menu-item v-for="(item, key) in echartList" :key="key">
                 <router-link :to="{path: '/echart/'+ item.path}" tag="li">{{item.name}}</router-link>
               </el-menu-item>
-              <!-- <el-menu-item index="1-2">选项2</el-menu-item> -->
+            </el-menu-item-group>
+          </el-submenu>
+          <el-submenu index="4">
+            <template slot="title">
+              <i class="el-icon-menu"></i>
+              <span>数据</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item v-for="(item, key) in aList" :key="key">
+                <router-link :to="{path: '/al/'+ item.path}" tag="li">{{item.name}}</router-link>
+              </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
@@ -67,6 +79,8 @@
 <script>
 import dList from "@/config/d3.js";
 import wList from "@/config/webgl.js";
+import eList from "@/config/echart.js";
+import aList from "@/config/algorithm.js";
 export default {
   name: "",
   props: [""],
@@ -74,14 +88,8 @@ export default {
     return {
 			d3List: dList,
 			wList: wList,
-      echartList: [
-        { name: "折线图", path: "e1" },
-        { name: "柱状图", path: "e2" },
-        { name: "条形图", path: "e3" },
-        { name: "饼图", path: "e4" },
-        { name: "环图", path: "e5" }
-      ],
-      
+      echartList: eList,
+      aList: aList
     };
   },
   components: {},

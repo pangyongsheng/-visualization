@@ -1,42 +1,23 @@
 /*
  * @Author       : your name
- * @Date         : 2020-04-10 15:26:12
- * @LastEditTime : 2020-07-06 10:57:52
- * @LastEditors  : your name
+ * @Date         : 2020-06-30 15:27:57
+ * @LastEditTime : 2020-07-13 14:27:00
+ * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
- * @FilePath     : \vd\src\router\rechart.js
+ * @FilePath     : \vd\src\config\d3.js
  */ 
-export default[
+import eList from '@/config/echart.js'
+export default [
     {
         path: '/echart',
         redirect: '/echart/e1',
-        component: () => import(/* webpackChunkName: 'echart' */ '@/views/About'),
-        children: [
-            {
-                path: 'e1',
-                name: 'echart1',
-                component: () => import(/* webpackChunkName: 'echart' */ '@/views/echart/e1')
-            },
-            {
-                path: 'e2',
-                name: 'echart2',
-                component: () => import(/* webpackChunkName: 'echart' */ '@/views/echart/e2')
-            },
-            {
-                path: 'e3',
-                name: 'echart3',
-                component: () => import(/* webpackChunkName: 'echart' */ '@/views/echart/e3')
-            },
-            {
-                path: 'e4',
-                name: 'echart4',
-                component: () => import(/* webpackChunkName: 'echart' */ '@/views/echart/e4')
-            },
-            {
-                path: 'e5',
-                name: 'echart5',
-                component: () => import(/* webpackChunkName: 'echart' */ '@/views/echart/e5')
-            },
-        ]
+        component: () => import(/* webpackChunkName: 'd3page' */ '@/views/About'),
+        children: eList.map(item => {
+            return {
+                path: item.path,
+                name: item.path,
+                component: () => import(/* webpackChunkName: 'd3page' */ `@/views/echart/${item.path}`)
+            }
+        })
     },
 ]
