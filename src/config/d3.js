@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-06-30 15:27:57
- * @LastEditTime : 2020-07-14 16:24:08
+ * @LastEditTime : 2020-07-15 14:37:56
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\config\d3.js
@@ -22,4 +22,6 @@ export default [
     {name:'散点图', path: 'd13'},
     {name:'气泡图', path: 'd14'},
     {name:'面积图', path: 'd15'},
+    {name:'地图', path: 'd16'},
+    {name:'树状图', path: 'd17'},
 ]
