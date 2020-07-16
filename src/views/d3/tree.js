@@ -1,66 +1,82 @@
 /*
  * @Author       : your name
  * @Date         : 2020-07-15 16:49:59
- * @LastEditTime : 2020-07-15 16:50:20
- * @LastEditors  : your name
+ * @LastEditTime : 2020-07-16 11:01:40
+ * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\d3\tree.js
  */ 
 export default{
-    "name":"中国",
-    "children":
-    [
-      {
-        "name":"浙江" ,
-        "children":
-        [
-          {"name":"杭州" },
-          {"name":"宁波" },
-          {"name":"温州" },
-          {"name":"绍兴" }
-        ]
-      },
-  
-      {
-        "name":"广西" ,
-        "children":
-        [
-          {
-            "name":"桂林",
-            "children":
-            [
-              {"name":"秀峰区"},
-              {"name":"叠彩区"},
-              {"name":"象山区"},
-              {"name":"七星区"}
-            ]
-          },
-          {"name":"南宁"},
-          {"name":"柳州"},
-          {"name":"防城港"}
-        ]
-      },
-  
-      {
-        "name":"黑龙江",
-        "children":
-        [
-          {"name":"哈尔滨"},
-          {"name":"齐齐哈尔"},
-          {"name":"牡丹江"},
-          {"name":"大庆"}
-        ]
-      },
-  
-      {
-        "name":"新疆" ,
-        "children":
-        [
-          {"name":"乌鲁木齐"},
-          {"name":"克拉玛依"},
-          {"name":"吐鲁番"},
-          {"name":"哈密"}
-        ]
-      }
-    ]
-  }
+  name: "垃圾分类",
+  children: [
+    {
+      name: "可回收垃圾",
+      children: [
+        {
+          name: "废纸",
+          children:[
+            {name:"报纸"},
+            {name:"期刊"}
+          ]
+        },
+        {
+          name: "金属"
+        },
+        {
+          name: "布料"
+        },
+        {
+          name: "塑料"
+        }
+      ]
+    },
+    {
+      name: "厨余垃圾",
+      children: [
+        {
+          name: "剩菜剩饭"
+        },
+        {
+          name: "骨头"
+        },
+        {
+          name: "果皮"
+        },
+        {
+          name: "菜根菜叶"
+        }
+      ]
+    },
+    {
+      name: "其他垃圾",
+      children: [
+        {
+          name: "纸巾"
+        },
+        {
+          name: "尘土"
+        },
+        {
+          name: "残叶"
+        }
+      ]
+    },
+    {
+      name: "有害垃圾",
+      children: [
+        {
+          name: "过期药物"
+        },
+        {
+          name: "化妆品"
+        },
+        {
+          name: "废弃灯泡"
+        },
+        {
+          name: "蓄电池"
+        }
+      ]
+    }
+  ]
+}

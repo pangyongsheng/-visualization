@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-06-18 15:54:06
- * @LastEditTime : 2020-06-19 16:26:26
+ * @LastEditTime : 2020-07-16 14:08:36
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\d3\d3.vue
@@ -48,7 +48,7 @@ export default {
 
       var arc_generator = d3
         .arc()
-        .innerRadius(0)//内半径
+        .innerRadius(50)//内半径
         .outerRadius(100); //外半径
 
       //将原始数据变成可以绘制饼状图的数据，
@@ -70,7 +70,7 @@ export default {
           return arc_generator(d); //往弧形生成器中出入数据
         })
         .attr("fill", function(d, i) {
-            console.log(colorScale(i))
+            // console.log(colorScale(i))
           return colorScale(i); //设置颜色
         });
 

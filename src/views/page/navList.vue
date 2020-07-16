@@ -1,21 +1,20 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-04-20 17:53:45
- * @LastEditTime : 2020-07-13 14:37:20
+ * @LastEditTime : 2020-07-16 17:41:18
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\page\navList.vue
 --> 
 <template>
-  <div>
-    <el-row class="tac">
-      <el-col :span="24">
+  <div style="height:100%">
+    
         <el-menu
           default-active="1"
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
-          background-color="#545c64"
+          background-color="rgb(30, 33, 35)"
           text-color="#fff"
           active-text-color="#ffd04b"
         >
@@ -71,8 +70,7 @@
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
-      </el-col>
-    </el-row>
+
   </div>
 </template>
 
@@ -110,7 +108,7 @@ export default {
 </script>
 <style lang='scss' scoped>
 .el-menu-vertical-demo {
-  height: 100vh;
   text-align: left;
+  height: 100%;
 }
 </style>

@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-06-19 14:14:04
- * @LastEditTime : 2020-07-15 17:27:18
+ * @LastEditTime : 2020-07-16 11:17:21
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\d3\d13.vue
@@ -28,8 +28,8 @@ export default {
   },
   methods: {
     drawBar() {
-      this.width = 800;
-      this.height = 800;
+      this.width = 600;
+      this.height = 600;
       this.padding = { top: 30, right: 30, bottom: 30, left: 30 };
       const _this = this;
 
@@ -148,8 +148,8 @@ export default {
 <style lang='scss' scope>
 #d17 {
   margin: 30px auto;
-  width: 800px;
-  height: 600px;
+  width: 600px;
+  height: 500px;
   border: 1px solid #000;
   .point {
     fill: #2ec7c9;
