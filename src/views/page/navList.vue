@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-04-20 17:53:45
- * @LastEditTime : 2020-07-16 17:41:18
+ * @LastEditTime : 2020-07-17 14:02:00
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\page\navList.vue
@@ -14,7 +14,7 @@
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
-          background-color="rgb(30, 33, 35)"
+          background-color="rgb(81, 86, 90)"
           text-color="#fff"
           active-text-color="#ffd04b"
         >
