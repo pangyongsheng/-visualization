@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-03 18:30:01
- * @LastEditTime : 2020-07-21 16:59:13
+ * @LastEditTime : 2020-07-21 17:24:34
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\webgl\t1.vue
@@ -27,6 +27,7 @@ export default {
     this.init();
     // this.draw();
     this.draw();
+    this.draw2();
     this.render();
     
   },
@@ -37,7 +38,8 @@ export default {
       this.renderer = new THREE.WebGLRenderer({
         canvas: this.$refs.thr
       });
-      this.renderer.setClearColor(0x000000);
+      this.renderer.setClearColor(0xffffff);
+      this.renderer.shadowMapEnabled = true;
 
       // 场景
       this.scene = new THREE.Scene();
@@ -67,16 +69,27 @@ export default {
       loader.load('/lib/WaltHead.obj', function(obj) {
          obj.traverse(function(child) {
             if (child instanceof THREE.Mesh) {
-                child.material.side = THREE.DoubleSide;
+              child.material = new THREE.MeshLambertMaterial({
+                  color: 0xb1a1a1,
+                  side: THREE.DoubleSide
+              });
             }
         });
           //储存到全局变量中
           _this.mesh = obj; 
+          obj.castShadow = true;
           _this.scene.add(obj);
       });
     },
     draw2() {
-      console.log(1)
+      let plane = new THREE.Mesh(new THREE.PlaneGeometry(100, 100, 10, 10),
+          new THREE.MeshLambertMaterial({
+              color: 0xdddddd
+          }));
+      plane.rotation.x = -Math.PI / 2;
+      plane.position.y = -1;
+      plane.receiveShadow = true;
+      this.scene.add(plane);
     },
     draw3() {}
   }
