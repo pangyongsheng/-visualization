@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-03 18:30:01
- * @LastEditTime : 2020-07-21 16:04:38
+ * @LastEditTime : 2020-07-21 16:25:40
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\webgl\t1.vue
@@ -42,7 +42,7 @@ export default {
       this.scene = new THREE.Scene();
 
       // 相机
-      this.camera = new THREE.PerspectiveCamera(45, 500 / 500, 1, 1500);
+      this.camera = new THREE.PerspectiveCamera(45, 500 / 500, 1, 2000);
       this.camera.position.set(100, 100, 1000);
       this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
