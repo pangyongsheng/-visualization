@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-06-18 15:54:06
- * @LastEditTime : 2020-07-01 15:15:04
+ * @LastEditTime : 2020-07-20 14:40:22
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\d3\d3.vue
@@ -41,6 +41,7 @@ export default {
         outLineWidth: 14,
         counterclockwise: true,
         slider: 10,
+        innerLineDash: 10,
         // color: ["#FF9400", "#FFEC00"],
         // sliderColor: "#A69900",
         // sliderBorderColor: "#FFEC00",
