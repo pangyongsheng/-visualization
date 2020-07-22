@@ -1,9 +1,19 @@
+<!--
+ * @Author       : your name
+ * @Date         : 2020-04-21 18:27:13
+ * @LastEditTime : 2020-07-22 17:09:25
+ * @LastEditors  : your name
+ * @Description  : In User Settings Edit
+ * @FilePath     : \vd\src\views\echart\e3.vue
+--> 
 <template>
   <ve-bar :data="chartData"></ve-bar>
 </template>
 
 <script>
+import veBar from 'v-charts/lib/bar.common'
   export default {
+    components: {veBar },
     data () {
       return {
         chartData: {

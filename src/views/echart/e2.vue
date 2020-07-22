@@ -1,9 +1,18 @@
+<!--
+ * @Author       : your name
+ * @Date         : 2020-04-21 18:27:07
+ * @LastEditTime : 2020-07-22 17:08:22
+ * @LastEditors  : Please set LastEditors
+ * @Description  : In User Settings Edit
+ * @FilePath     : \vd\src\views\echart\e2.vue
+--> 
 <template>
   <ve-histogram :data="chartData"></ve-histogram>
 </template>
-
 <script>
+import veHistogram from 'v-charts/lib/histogram.common'
   export default {
+    components: { veHistogram },
     data () {
       return {
         chartData: {

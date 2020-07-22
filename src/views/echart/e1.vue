@@ -1,9 +1,19 @@
+<!--
+ * @Author       : your name
+ * @Date         : 2020-04-21 17:35:30
+ * @LastEditTime : 2020-07-22 17:07:51
+ * @LastEditors  : your name
+ * @Description  : In User Settings Edit
+ * @FilePath     : \vd\src\views\echart\e1.vue
+--> 
 <template>
   <ve-line :data="chartData" :settings="chartSettings"></ve-line>
 </template>
 
 <script>
+import veLine from 'v-charts/lib/line.common'
 export default {
+	 components: {veLine},
     data () {
 		this.chartSettings = {
 			axisSite: { right: ['下单率'] },

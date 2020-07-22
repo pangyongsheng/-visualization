@@ -1,3 +1,11 @@
+<!--
+ * @Author       : your name
+ * @Date         : 2020-04-09 11:33:59
+ * @LastEditTime : 2020-07-22 15:59:13
+ * @LastEditors  : Please set LastEditors
+ * @Description  : In User Settings Edit
+ * @FilePath     : \vd\public\index.html
+--> 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,12 +14,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.css) { %>
+      <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="external nofollow" rel="external nofollow" rel="preload" as="style">
+      <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="external nofollow" rel="external nofollow" rel="stylesheet">
+     <% } %>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
+    <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.js) { %>
+      <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+    <% } %>
     <!-- built files will be auto injected -->
   </body>
 </html>

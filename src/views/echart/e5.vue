@@ -1,9 +1,19 @@
+<!--
+ * @Author       : your name
+ * @Date         : 2020-04-21 18:27:26
+ * @LastEditTime : 2020-07-22 17:11:05
+ * @LastEditors  : Please set LastEditors
+ * @Description  : In User Settings Edit
+ * @FilePath     : \vd\src\views\echart\e5.vue
+--> 
 <template>
   <ve-ring :data="chartData"></ve-ring>
 </template>
 
 <script>
+import veRing from 'v-charts/lib/ring.common'
   export default {
+    components: {veRing },
     data () {
       return {
         chartData: {

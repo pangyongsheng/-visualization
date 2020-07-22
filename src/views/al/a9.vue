@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-13 14:33:51
- * @LastEditTime : 2020-07-21 18:37:14
+ * @LastEditTime : 2020-07-22 17:06:43
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\a1.vue
@@ -36,7 +36,7 @@
     <el-row :gutter="20">
       <el-col :span="10">
         <div class="aa">
-          <ve-histogram :data="chartData"></ve-histogram>
+          <ve-histogram :data="chartData" :extend="extend"></ve-histogram>
         </div>
        </el-col>
        <el-col :span="10">
@@ -48,11 +48,18 @@
   </div>
 </template>
 <script>
-
+import veHistogram from 'v-charts/lib/histogram.common'
+import vePie from 'v-charts/lib/pie.common'
 export default {
   name:'',
   props:[''],
+  components: {veHistogram, vePie },
   data () {
+    this.extend = {
+        series: {
+          label: { show: true, position: "top" }
+        }
+    }
     return {
       total: 100,
       num: 10,

@@ -1,9 +1,19 @@
+<!--
+ * @Author       : your name
+ * @Date         : 2020-04-21 18:27:19
+ * @LastEditTime : 2020-07-22 17:10:06
+ * @LastEditors  : your name
+ * @Description  : In User Settings Edit
+ * @FilePath     : \vd\src\views\echart\e4.vue
+--> 
 <template>
   <ve-pie :data="chartData"></ve-pie>
 </template>
 
 <script>
+import vePie from 'v-charts/lib/pie.common'
   export default {
+    components: { vePie },
     data () {
       return {
         chartData: {
