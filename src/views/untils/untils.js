@@ -1,13 +1,13 @@
 /*
  * @Author       : pangys
  * @Date         : 2020-07-17 10:34:52
- * @LastEditTime : 2020-07-17 18:06:11
+ * @LastEditTime : 2020-07-27 19:01:22
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\untils.js
  */
 // 严格判断是否为数值
-export function isRealNum() {
+export function isRealNum(value) {
 	return typeof value === 'number' && !isNaN(value);
 }
 
@@ -41,9 +41,12 @@ export function RandomSplitA(Total, Num, Min, Max, expect) {
 	let avg = Math.floor(Total / Total);
 	let rest = Total % Num;
 
-	let result = Array(n).fill(avg);
+	let result = Array(Num).fill(avg);
 
+}
 
-
-
+export function dataTypeJudge(val) {
+	const dataType = Object.prototype.toString.call(val).replace(/\[object (\w+)\]/, "$1").toLowerCase();
+	console.log(dataType)
+	return dataType;
 }

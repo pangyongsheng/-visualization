@@ -1,48 +1,48 @@
 /*
  * @Author       : your name
  * @Date         : 2020-07-24 11:40:57
- * @LastEditTime : 2020-07-24 16:06:31
+ * @LastEditTime : 2020-07-27 11:04:57
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\lib\queue.js
  */ 
 class Stack{
 
-    constructor(){
-        this.items = [];
-    }
+    // constructor(){
+    //     this.items = [];
+    // }
 
-    push (element) {
-        this.items.push(element);
-    }
+    // push (element) {
+    //     this.items.push(element);
+    // }
 
-    pop () {
-        return this.items.pop();
-    }
+    // pop () {
+    //     return this.items.pop();
+    // }
 
-    peek () {
-        return this.items[this.items.length-1];
-    }
+    // peek () {
+    //     return this.items[this.items.length-1];
+    // }
 
-    isEmpty () {
-        return this.items.length == 0;
-    }
+    // isEmpty () {
+    //     return this.items.length == 0;
+    // }
 
-    size () {
-        return this.items.length;
-    }
+    // size () {
+    //     return this.items.length;
+    // }
 
-    clear () {
-        this.items = [];
-    }
+    // clear () {
+    //     this.items = [];
+    // }
 
-    print () {
-        console.log(items.toString());
-    }
+    // print () {
+    //     console.log(items.toString());
+    // }
 
-    toString () {
-        return items.toString();
-    }
+    // toString () {
+    //     return items.toString();
+    // }
 }
 
 export default Stack

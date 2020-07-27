@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-07-13 14:29:06
- * @LastEditTime : 2020-07-16 15:13:58
+ * @LastEditTime : 2020-07-27 18:32:31
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\config\algorithm.js
@@ -16,4 +16,6 @@ export default [
     { name: "树", path: "a7" },
     { name: "图", path: "a8" },
     { name: "拆分数字", path: "a9" },
+    { name: "字符串方法", path: "a10" },
+    { name: "正则", path: "a11" },
 ]
