@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-07-27 10:36:35
- * @LastEditTime : 2020-07-27 16:15:50
+ * @LastEditTime : 2020-07-28 18:33:49
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\lib\arr.js
@@ -51,8 +51,9 @@ export function unique3(arr) {
 	return arr.filter((element, index, self) => self.indexOf(element) === index)
 }
 // 求和
-export function sum(arr) {
+export function summ(arr) {
 	return arr.reduce((prev, cur)=> {
 		return prev + cur
 	}, 0)
 }
+

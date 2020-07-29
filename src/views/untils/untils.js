@@ -1,7 +1,7 @@
 /*
  * @Author       : pangys
  * @Date         : 2020-07-17 10:34:52
- * @LastEditTime : 2020-07-27 19:01:22
+ * @LastEditTime : 2020-07-28 10:15:51
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\untils.js
@@ -47,6 +47,6 @@ export function RandomSplitA(Total, Num, Min, Max, expect) {
 
 export function dataTypeJudge(val) {
 	const dataType = Object.prototype.toString.call(val).replace(/\[object (\w+)\]/, "$1").toLowerCase();
-	console.log(dataType)
+	console.log(Object.prototype.toString.call(val))
 	return dataType;
 }

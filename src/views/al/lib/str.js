@@ -24,4 +24,3 @@ export function parseUrlSearch(search) {
       return t;
     }, {});
 }
- 
