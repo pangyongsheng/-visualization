@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-07-28 18:02:05
- * @LastEditTime : 2020-07-29 18:06:46
+ * @LastEditTime : 2020-07-30 11:48:54
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\lib\al.js
@@ -109,3 +109,25 @@ const missNumber = function(nums) {
     }
     return left;
 }
+
+// 平均拆分一个数组
+export  function averageSplit(arr, num=3){
+    const sortArr = arr.sort((a, b)=> a - b);
+    const arrSum = function (arr) {
+        return arr.reduce((prev, curr) => prev + curr , 0)
+    } 
+    let result =  Array.from(Array(num), v => []);
+    for(let i = 0; i < sortArr.length; i++){
+        let min=0, minIndex=0;
+        for(let j =0; j< result.length; j++){
+            let sum = arrSum(result[j]);
+            if(j == 0) min = sum;
+            if(sum <= min){
+                min = sum;
+                minIndex = j;
+            }
+        }
+        result[minIndex].push(sortArr[i])
+    }
+     return result;
+}   

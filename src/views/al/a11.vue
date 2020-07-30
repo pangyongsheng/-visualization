@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-27 18:31:39
- * @LastEditTime : 2020-07-29 18:07:24
+ * @LastEditTime : 2020-07-30 14:46:05
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\a11.vue
@@ -22,6 +22,7 @@
 
 <script>
 import { dataTypeJudge } from "../untils/untils";
+import { averageSplit } from "./lib/al"
 export default {
   name: "",
   props: [""],
@@ -38,17 +39,16 @@ export default {
   },
   methods: {
     ff(nums) {
-     let left = 0;
-      let right = nums.length - 1;
-      while(left <= right){
-          let middle = Math.floor((left + right) / 2);
-          if( middle == nums[middle]){
-              left = middle + 1
-          }else{
-              right = middle - 1
-          }
+    //  let a = averageSplit([1,2,5,9,3,1,6,21,5,8,9,4,10])
+    //  console.log(a)
+     var a = [0];
+      if (a) {
+        console.log(a)
+        console.log(a == true);
+        console.log(a)
+      } else {
+        console.log(a);
       }
-      return left;
     },
     tourl() {
       this.cons1 = dataTypeJudge(this.input1);
