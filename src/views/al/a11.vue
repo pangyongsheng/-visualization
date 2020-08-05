@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-27 18:31:39
- * @LastEditTime : 2020-07-30 14:46:05
+ * @LastEditTime : 2020-08-04 13:58:16
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\a11.vue
@@ -17,6 +17,7 @@
       </el-col>
       <el-col :span="6">{{cons1}}</el-col>
     </el-row>
+    <el-button type="primary" @click.native="test">测试</el-button>
   </div>
 </template>
 
@@ -35,26 +36,44 @@ export default {
     };
   },
   created() {
-    console.log(this.ff([0,1,2,3,4,5,6,7,9]));
+    //console.log(this.ff([0,1,2,3,4,5,6,7,9]));
   },
   methods: {
-    ff(nums) {
-    //  let a = averageSplit([1,2,5,9,3,1,6,21,5,8,9,4,10])
-    //  console.log(a)
-     var a = [0];
-      if (a) {
-        console.log(a)
-        console.log(a == true);
-        console.log(a)
-      } else {
-        console.log(a);
+    ff(data) {
+      const result = [];
+      let queue = data;
+      while(queue.length > 0){
+        [...queue].forEach(item => {
+          queue.shift();
+          result.push(item.name); 
+          item.children && queue.push(...item.children)
+        });
       }
+      return result;
     },
     tourl() {
       this.cons1 = dataTypeJudge(this.input1);
     },
-    toString() {
-      // this.cons2 = parseUrlSearch(this.input2)
+    test() {
+      const data =[
+          {
+              name: 'a',
+              children: [
+                  { name: 'b', children: [{ name: 'e' }] },
+                  { name: 'c', children: [{ name: 'f' }] },
+                  { name: 'd', children: [{ name: 'g' }] },
+              ],
+          },
+          {
+              name: 'a2',
+              children: [
+                  { name: 'b2', children: [{ name: 'e2' }] },
+                  { name: 'c2', children: [{ name: 'f2' }] },
+                  { name: 'd2', children: [{ name: 'g2' }] },
+              ],
+          }
+        ]
+      console.log(this.ff(data));
     },
   },
 };

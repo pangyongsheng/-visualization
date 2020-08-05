@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-07-28 18:02:05
- * @LastEditTime : 2020-07-30 11:48:54
+ * @LastEditTime : 2020-08-04 14:00:19
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\lib\al.js
@@ -130,4 +130,33 @@ export  function averageSplit(arr, num=3){
         result[minIndex].push(sortArr[i])
     }
      return result;
-}   
+}
+
+// 深度优先
+export function deepFirstSearch(data){
+    const result = [];
+    data.forEach(item => {
+        const map = data => {
+            result.push(data.name);
+            data.children && data.children.forEach(child => map(child));
+        }
+        map(item);
+    })
+    return result.join(',');
+}
+
+
+// 广度优先
+export function breadFirstSearch(data){
+    const result = [];
+    let queue = data;
+    while(queue.length > 0){
+        [...queue].forEach(item => {
+            queue.shift();
+            result.push(item.name); 
+            item.children && queue.push(...item.children)
+        });
+    }
+    return result;
+}
+

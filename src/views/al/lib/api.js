@@ -1,9 +1,7 @@
-import { delete } from "vue/types/umd";
-
 /*
  * @Author       : your name
  * @Date         : 2020-07-31 09:55:34
- * @LastEditTime : 2020-07-31 17:04:22
+ * @LastEditTime : 2020-08-03 11:21:03
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\lib\promis.js

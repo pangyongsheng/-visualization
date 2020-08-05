@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-03 18:30:01
- * @LastEditTime : 2020-07-06 15:17:46
+ * @LastEditTime : 2020-08-05 15:08:35
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\webgl\t1.vue
@@ -30,16 +30,16 @@ export default {
       /**
        * 创建场景对象Scene
        */
-      var scene = new THREE.Scene();
+      let scene = new THREE.Scene();
       /**
        * 创建网格模型
        */
       // var geometry = new THREE.SphereGeometry(60, 40, 40); //创建一个球体几何对象
-      var geometry = new THREE.BoxGeometry(100, 100, 100); //创建一个立方体几何对象Geometry
-      var material = new THREE.MeshLambertMaterial({
+      let geometry = new THREE.BoxGeometry(100, 100, 100); //创建一个立方体几何对象Geometry
+      let material = new THREE.MeshLambertMaterial({
         color: 0x0000ff
       }); //材质对象Material
-      var mesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh
+      let mesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh
       scene.add(mesh); //网格模型添加到场景中
       /**
        * 光源设置

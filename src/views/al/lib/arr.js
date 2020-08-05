@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-07-27 10:36:35
- * @LastEditTime : 2020-07-28 18:33:49
+ * @LastEditTime : 2020-08-03 14:52:25
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\lib\arr.js
@@ -52,8 +52,37 @@ export function unique3(arr) {
 }
 // 求和
 export function summ(arr) {
-	return arr.reduce((prev, cur)=> {
+	return arr.reduce((prev, cur) => {
 		return prev + cur
 	}, 0)
 }
 
+// 随机排序
+export function randomSort(arr) {
+	for (let i = 0, l = arr.length; i < l; i++) {
+		let rc = parseInt(Math.random() * l)
+		let temp = arr[i];
+		arr[i] = arr[rc]
+		arr[rc] = temp
+	}
+	return arr
+}
+
+// 转化为数形结构
+export function toTree(arr, parentId = 0) {
+	let target = [];
+	for (let i = 0; i < arr.length; i++) {
+		let node = arr[i];
+		if (node.pid === parentId) {
+			let newNode = {
+				...node,
+				name: node.name,
+				id: node.id,
+				children: toTree(arr, node.id)
+			}
+			target.push(newNode)
+		}
+
+	}
+	return target;
+}
