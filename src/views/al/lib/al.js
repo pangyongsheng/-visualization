@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-07-28 18:02:05
- * @LastEditTime : 2020-08-04 14:00:19
+ * @LastEditTime : 2020-08-06 14:21:54
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\lib\al.js
@@ -50,34 +50,53 @@ const findMedianSortedArrays = function(nums1, nums2) {
 // 获取最长回文
 const longestPalindrome = function(str) {
     // 判断是否为回文
-       const isHuwen = (s) => {
-         for(let i =0; i<s.length; i++){
-           console.log(s.charAt(i), s.charAt(s.length-1-i))
-           if(s.charAt(i) === s.charAt(s.length-1-i)){
-             if(i == s.length-1){
-               return true;
-             }
-           }else{
-             return false;
-           }
-         }
-       }
-       let hw = '';
-       for(let j=0; j<str.length; j++){
-         let temp=str.charAt(j);
-         for(let k=0; k < str.length-j; k++){
-           if(k>0){
-             temp = temp + str.charAt(j+k)
-           }
-           console.log(temp)
-           console.log(isHuwen(temp))
-           if(isHuwen(temp) && temp.length > hw.length){
-             hw = temp;
-           }
-         }
-       }
-       return hw;
+    const isHuwen = (s) => {
+        for(let i =0; i<s.length; i++){
+        console.log(s.charAt(i), s.charAt(s.length-1-i))
+        if(s.charAt(i) === s.charAt(s.length-1-i)){
+            if(i == s.length-1){
+            return true;
+            }
+        }else{
+            return false;
+        }
+        }
+    }
+    let hw = '';
+    for(let j=0; j<str.length; j++){
+        let temp=str.charAt(j);
+        for(let k=0; k < str.length-j; k++){
+            if(k>0){
+                temp = temp + str.charAt(j+k)
+            }
+            console.log(temp)
+            console.log(isHuwen(temp))
+            if(isHuwen(temp) && temp.length > hw.length){
+                hw = temp;
+            }
+        }
+    }
+    return hw;
  };
+// dp
+// 给出首项，以及一个递推式子，让你求任意项的值
+// 寻找状态转移方程 => 建立合适的数据结构表 => 填表
+// 你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，
+// 影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，
+// 如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
+export function rob(nums) {
+    if(nums.length == 0) return 0;
+    if(nums.length == 1) return nums[0];
+    if(nums.length == 2) return Math.max(nums[0], nums[1]);
+    let db = [nums[0], Math.max(nums[0], nums[1])];
+    for(let i= 2; i < nums.length; i++){
+        db[i] = Math.max(db[i-1], db[i-2]+nums[i])
+    }
+    console.log(db)
+    return Math.max(db[nums.length-1],db[nums.length-2]);
+}
+
+
 
 // 贪心
 // 给定一个非负整数数组，你最初位于数组的第一个位置。

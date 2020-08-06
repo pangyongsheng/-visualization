@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-27 18:31:39
- * @LastEditTime : 2020-08-04 13:58:16
+ * @LastEditTime : 2020-08-06 14:18:35
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\a11.vue
@@ -23,7 +23,7 @@
 
 <script>
 import { dataTypeJudge } from "../untils/untils";
-import { averageSplit } from "./lib/al"
+import { averageSplit, rob } from "./lib/al"
 export default {
   name: "",
   props: [""],
@@ -55,25 +55,8 @@ export default {
       this.cons1 = dataTypeJudge(this.input1);
     },
     test() {
-      const data =[
-          {
-              name: 'a',
-              children: [
-                  { name: 'b', children: [{ name: 'e' }] },
-                  { name: 'c', children: [{ name: 'f' }] },
-                  { name: 'd', children: [{ name: 'g' }] },
-              ],
-          },
-          {
-              name: 'a2',
-              children: [
-                  { name: 'b2', children: [{ name: 'e2' }] },
-                  { name: 'c2', children: [{ name: 'f2' }] },
-                  { name: 'd2', children: [{ name: 'g2' }] },
-              ],
-          }
-        ]
-      console.log(this.ff(data));
+      
+      console.log(rob([0,1,0,1,0,0]));
     },
   },
 };
