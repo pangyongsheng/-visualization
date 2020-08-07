@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-07-31 09:55:34
- * @LastEditTime : 2020-08-03 11:21:03
+ * @LastEditTime : 2020-08-07 16:08:42
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\lib\promis.js
@@ -84,6 +84,7 @@ Fn.prototype.mycall = function (context) {
 
 function _new(fn, arg) {
     let obj = {};
+    
     obj.__proto__ = fn.prototype;
 
     fn.apply(obj, arg);
