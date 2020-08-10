@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-07-31 09:55:34
- * @LastEditTime : 2020-08-07 16:08:42
+ * @LastEditTime : 2020-08-10 10:57:04
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\lib\promis.js
@@ -14,15 +14,15 @@ export function promis(fn){
     that.failcallbacks = [];       
         
     this.then =  function(fulfilled, rejected){
-        succcallbacks.push(fulfilled)
-        failcallbacks.psuh(rejected)
+        that.succcallbacks.push(fulfilled)
+        that.failcallbacks.psuh(rejected)
     }
 
     function resolve(value) {
         if (that.status === 'pending') {
             that.status = 'fulfilled'
             setTimeout(()=>{
-                succcallbacks.forEach((callback)=> {
+                that.succcallbacks.forEach((callback)=> {
                     callback(value)
                 })
             }, 0)
@@ -33,7 +33,7 @@ export function promis(fn){
         if (that.status === 'pending') {
             that.status = 'rejected'
             setTimeout(()=>{
-                failcallbacks.forEach((callback)={
+                that.failcallbacks.forEach((callback)=>{
                     callback(value)
                 })
             }, 0)
@@ -62,8 +62,8 @@ promis.race = function(promises){
         throw new TypeError('You must pass array')
     }
     return new Promise(function(resolve,reject){
-        promises.forEach(function(item){
-            promises[i].then(resolver,rejecter)
+        promises.forEach(function(item,i){
+            promises[i].then(resolve,reject)
         })
     })
 }

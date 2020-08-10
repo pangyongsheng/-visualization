@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-06-30 15:27:57
- * @LastEditTime : 2020-08-05 15:29:01
+ * @LastEditTime : 2020-08-10 17:08:57
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\config\d3.js
@@ -12,4 +12,6 @@ export default [
     {name:'地球动画', path: 't4'},
     {name:'粒子系统', path: 't5'},
     {name:'顶点渲染（点线面）', path: 't3'},
+    {name:'材质及模型', path: 't6'},
+    {name:'光源及投影', path: 't7'},
 ]
