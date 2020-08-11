@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-03 18:30:01
- * @LastEditTime : 2020-08-11 17:04:44
+ * @LastEditTime : 2020-08-11 17:10:24
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\webgl\t1.vue
@@ -63,6 +63,7 @@ export default {
       plane.rotation.x = -0.5*Math.PI;
       plane.receiveShadow = true;
       this.scene.add(plane);
+      this.planeGeometry = planeGeometry;
       
       for (var i = 0 ; i < 20; i++){
          this.draw(planeGeometry)
@@ -84,10 +85,10 @@ export default {
       
       cube.castShadow = true;
       cube.name = "方块—" + this.scene.children.length;
-      console.log(planeGeometry.parameters.width);
-      cube.position.x = -16 + Math.round((Math.random() * planeGeometry.parameters.width));
+      console.log(this.planeGeometry.parameters.width);
+      cube.position.x = -16 + Math.round((Math.random() * this.planeGeometry.parameters.width));
       cube.position.y = 2 + Math.round(Math.random() * 20);
-      cube.position.z = - 15 + Math.round((Math.random()*planeGeometry.parameters.height));
+      cube.position.z = - 15 + Math.round((Math.random()*this.planeGeometry.parameters.height));
       console.log("添加方块："+cube.name);
       this.scene.add(cube);
     },
