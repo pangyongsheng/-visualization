@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-03 18:30:01
- * @LastEditTime : 2020-08-12 10:29:45
+ * @LastEditTime : 2020-08-12 10:29:56
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\webgl\t1.vue
@@ -70,17 +70,7 @@ export default {
       requestAnimationFrame(this.render);
     },
     draw() {
-      let geometry = new THREE.SphereGeometry(50, 15, 15); //创建一个球体几何对象
-      // 创建一个点材质对象
-      let material = new THREE.PointsMaterial({
-        color: 0x0000ff, //颜色
-        size: 2, //点渲染尺寸
-      });
-
-      geometry.translate(-120, 120, 0);
-      //点模型对象  参数：几何体  点材质
-      let point = new THREE.Points(geometry, material);
-      this.scene.add(point); 
+   
      
     },
     // 

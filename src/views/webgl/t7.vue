@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-03 18:30:01
- * @LastEditTime : 2020-08-11 17:10:24
+ * @LastEditTime : 2020-08-11 18:26:12
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\webgl\t1.vue
@@ -69,7 +69,8 @@ export default {
          this.draw(planeGeometry)
       }
      
-      
+      this.draw2();
+      this.draw4()
       this.render();
     },
     render(){
@@ -94,7 +95,8 @@ export default {
     },
     // 环境光
     draw2(){
-      this.scene.remove('ambient'); //点光源添加到场景中
+      let lignt = this.scene.getObjectByName("ambient")
+      this.scene.remove(lignt); //点光源添加到场景中s
       let ambient  = new THREE.AmbientLight(0x444444);
       ambient.name = 'ambient'
       ambient.position.set(400, 200, 300); //点光源位置
