@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-04-20 17:53:45
- * @LastEditTime : 2020-07-17 14:02:00
+ * @LastEditTime : 2020-08-13 11:34:21
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\page\navList.vue
@@ -50,7 +50,7 @@
           <el-submenu index="3">
             <template slot="title">
               <i class="el-icon-menu"></i>
-              <span>echart</span>
+              <span>其他</span>
             </template>
             <el-menu-item-group>
               <el-menu-item v-for="(item, key) in echartList" :key="key">
