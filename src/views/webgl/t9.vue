@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-03 18:30:01
- * @LastEditTime : 2020-08-13 18:05:29
+ * @LastEditTime : 2020-08-14 13:56:31
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\webgl\t1.vue
@@ -120,19 +120,17 @@ export default {
     },
     // Shape对象和轮廓填充
     draw3() {
-    //  let points = [
-    //     new THREE.Vector2(-50, -50),
-    //     new THREE.Vector2(-60, 0),
-    //     new THREE.Vector2(0, 50),
-    //     new THREE.Vector2(60, 0),
-    //     new THREE.Vector2(50, -50),
-    //     new THREE.Vector2(-50, -50),
-    //   ]
+      //  let points = [
+      //     new THREE.Vector2(-50, -50),
+      //     new THREE.Vector2(-60, 0),
+      //     new THREE.Vector2(0, 50),
+      //     new THREE.Vector2(60, 0),
+      //     new THREE.Vector2(50, -50),
+      //     new THREE.Vector2(-50, -50),
+      //   ]
       // 通过顶点定义轮廓
       let shape = new THREE.Shape();
       shape.absarc(0,0,80,0,2*Math.PI);
-
-
       let shape2 =new THREE.Shape();//Shape对象
       //外轮廓
       shape.moveTo(200,0);//起点
@@ -140,8 +138,6 @@ export default {
       shape.lineTo(300,100);//第3点
       shape.lineTo(300,0);//第4点
       shape.lineTo(200,0);//第5点
-
-
       // shape可以理解为一个需要填充轮廓
       // 所谓填充：ShapeGeometry算法利用顶点计算出三角面face3数据填充轮廓
       let geometry = new THREE.ShapeGeometry([shape, shape2], 15);
