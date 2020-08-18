@@ -1,8 +1,8 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-06-18 15:47:34
- * @LastEditTime : 2020-06-18 15:48:42
- * @LastEditors  : your name
+ * @LastEditTime : 2020-08-18 15:30:24
+ * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\d3\d1.vue
 --> 
@@ -42,7 +42,7 @@ export default {
         .x((d, i) => scale.x(i))
         .y(d => scale.y(d));
       this.line = path(this.data);
-    },
+    }, 
   },
 };
 </script>
