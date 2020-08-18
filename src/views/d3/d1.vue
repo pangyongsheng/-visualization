@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-06-18 15:47:34
- * @LastEditTime : 2020-08-18 15:30:24
+ * @LastEditTime : 2020-08-18 15:43:33
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\d3\d1.vue
@@ -42,7 +42,7 @@ export default {
         .x((d, i) => scale.x(i))
         .y(d => scale.y(d));
       this.line = path(this.data);
-    }, 
+    },
   },
 };
 </script>
@@ -51,6 +51,6 @@ svg
   margin: 25px;
 path
   fill: none
-  stroke: #76BF8A
+  stroke: #77BF8A
   stroke-width: 3px
 </style>
