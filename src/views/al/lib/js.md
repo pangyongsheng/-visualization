@@ -79,6 +79,7 @@ Function.prototype.myCall = function(thisArg, ...args) {
 ### 2、apply
 
 同上修改入参即格式
+Function.prototype.myApply = function(thisArg, args)
 
 ### 3、bind
 ```
@@ -258,8 +259,7 @@ function Child() {
     Parent.call(this, 'zhangsan') 
 }
 //原型链继承
-// Child.prototype = new Parent()
-Child.prototype = Parent.prototype  //将`指向父类实例`改为`指向父类原型`
+Child.prototype = Object.create(Parent.prototype)   //将`指向父类实例`改为`指向父类原型`
 Child.prototype.constructor = Child
 
 //测试
