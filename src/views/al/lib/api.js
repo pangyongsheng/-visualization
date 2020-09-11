@@ -1,7 +1,7 @@
 /*
  * @Author       : your name
  * @Date         : 2020-07-31 09:55:34
- * @LastEditTime : 2020-09-10 11:01:42
+ * @LastEditTime : 2020-09-11 16:01:52
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\al\lib\promis.js
@@ -113,9 +113,9 @@ function _new(fn, arg) {
 function clone(obj){
     let target = {};
     for(let key in obj){
-        if(Object.prototype.hasOwnProperty.call(obj, key)){
-            target[key] = obj[key]
-        }
+        // if(Object.prototype.hasOwnProperty.call(obj, key)){
+        //     target[key] = obj[key]
+        // }
     }
     return target
 }
