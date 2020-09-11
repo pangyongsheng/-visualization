@@ -18,7 +18,7 @@ let a = 1
 ```
 (function(){
     var _a = 1;
-})
+})()
 ```
 
 ## 2、实现const
@@ -99,7 +99,11 @@ Function.prototype.myBind = function (thisArg, ...args) {
     var self = this
     // new优先级
     var fbound = function () {
-        self.apply(this instanceof self ? this : thisArg, args.concat(Array.prototype.slice.call(arguments)))
+        self.apply(this instanceof self 
+            ? this 
+            : thisArg, 
+            args.concat(Array.prototype.slice.call(arguments))
+        )
     }
     // 继承原型上的属性和方法
     fbound.prototype = Object.create(self.prototype);
@@ -200,8 +204,8 @@ child.name          // '写代码像蔡徐抻'
 child.getName()     // '写代码像蔡徐抻'
 
 ```
-由于所有Child实例原型都指向同一个Parent实例, 因此对某个Child实例的父类引用类型变量修改会影响所有的Child实例
-在创建子类实例时无法向父类构造传参, 即没有实现super()的功能
+- 由于所有Child实例原型都指向同一个Parent实例, 因此对某个Child实例的父类引用类型变量修改会影响所有的Child实例
+- 在创建子类实例时无法向父类构造传参, 即没有实现super()的功能
 #### (2)构造函数
 构造函数继承，即在子类的构造函数中执行父类的构造函数，并为其绑定子类的this，让父类的构造函数把成员属性和方法都挂到子类的this上去，这样既能避免实例之间共享一个原型实例，又能向父类构造方法传参
 ```
@@ -269,5 +273,26 @@ child1.name[0] = 'foo'
 console.log(child1.name)          // ['foo']
 console.log(child2.name)          // ['zhangsan']
 child2.getName()                  // ['zhangsan']
+
+```
+
+## 实现instanceof
+```
+function _instanceof (instanceObject, classFunc) {
+    let classFunc = classFunc.prototype; // 取得当前类的原型
+    let proto = instanceObject.__proto__; // 取得当前实例对象的原型链
+    
+    //  let proto = Object.getPrototypeOf(instanceObject); // 取得当前实例对象的原型链上的属性
+  
+    while (true) {
+        if (proto === null) { // 找到了 Object的基类 Object.prototype.__proto__
+        return false;
+            };
+        if (proto === classFunc) { // 在当前实例对象的原型链上，找到了当前类
+        return true;
+        }
+        proto = proto.__proto__; // 沿着原型链__ptoto__一层一层向上查找
+    }
+}
 
 ```

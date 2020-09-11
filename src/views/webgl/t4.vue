@@ -1,7 +1,7 @@
 <!--
  * @Author       : your name
  * @Date         : 2020-07-03 18:30:01
- * @LastEditTime : 2020-07-21 16:05:28
+ * @LastEditTime : 2020-09-11 15:37:32
  * @LastEditors  : Please set LastEditors
  * @Description  : In User Settings Edit
  * @FilePath     : \vd\src\views\webgl\t1.vue
@@ -28,7 +28,8 @@ export default {
       destination: [
         [0, 0],
         [0, 180],
-        [0, 90][(0, 0)],
+        [0, 90],
+        [0, 0],
         [45, 0],
         [90, 0],
         [180, 0],
