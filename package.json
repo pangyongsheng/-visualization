@@ -2,6 +2,10 @@
   "name": "vd",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=12.22.0 <15.0.0",
+    "npm": ">=6.0.0"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -31,7 +35,7 @@
     "babel-plugin-component": "^1.1.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "node-sass": "^4.12.0",
+    "sass": "^1.32.0",
     "sass-loader": "^8.0.2",
     "v-charts": "^1.19.0",
     "vue-template-compiler": "^2.6.11"

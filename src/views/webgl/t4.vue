@@ -26,15 +26,11 @@ export default {
       clock: null,
       start: [0, 40],
       destination: [
-        [0, 0],
-        [0, 180],
-        [0, 90],
-        [0, 0],
-        [45, 0],
-        [90, 0],
-        [180, 0],
-        [-90, 0],
-        [-100, 0]
+        [116.4, 39.9],  // 北京
+        [-74.0, 40.7],   // 纽约
+        [2.35, 48.86],   // 巴黎
+        [139.7, 35.7],   // 东京
+        [-0.13, 51.5]    // 伦敦
       ],
       posTracks: []
     };
@@ -201,14 +197,36 @@ export default {
       // 计算向量夹角
       let angle = (v0.angleTo(v3) * 180) / Math.PI; // 0 ~ Math.PI
 
+      // 如果角度太小（两点太近），使用简单的控制点
+      if (angle < 0.1) {
+        return {
+          v1: v0.clone(),
+          v2: v3.clone()
+        };
+      }
+
       let aLen = angle * 2.5,
         hLen = angle * angle * 50;
 
       let p0 = new THREE.Vector3(0, 0, 0);
       // 法线向量
-      let rayLine = new THREE.Ray(p0, this.getVCenter(v0.clone(), v3.clone()));
+      let vCenter = this.getVCenter(v0.clone(), v3.clone());
+      let rayLine = new THREE.Ray(p0, vCenter);
+
+      // 计算射线上的点
+      let rayPoint = new THREE.Vector3();
+      rayLine.at(1, rayPoint);
+      let distance = rayPoint.distanceTo(p0);
+
+      // 避免除以0
+      if (distance < 0.001) {
+        distance = 0.001;
+      }
+
       // 顶点坐标
-      let vtop = rayLine.at(hLen / rayLine.at(1).distanceTo(p0), vtop); // 几倍位置
+      let vtop = new THREE.Vector3();
+      rayLine.at(hLen / distance, vtop);
+
       // 控制点坐标
       let v1 = this.getLenVcetor(v0.clone(), vtop, aLen);
       let v2 = this.getLenVcetor(v3.clone(), vtop, aLen);
@@ -280,8 +298,16 @@ export default {
       groupPoint.add(line);
       groupPoint.add(point);
 
-      groupPoint.rotateX(spherical.phi - Math.PI / 2);
-      groupPoint.rotateY(spherical.theta);
+      // 使用四元数计算正确的旋转
+      // 球面上的点的法线方向就是从球心指向该点的向量
+      let normal = pos.clone().normalize();
+      // 默认的上方向是 z 轴
+      let defaultUp = new THREE.Vector3(0, 0, 1);
+      // 创建四元数使 defaultUp 旋转到 normal 方向
+      let quaternion = new THREE.Quaternion();
+      quaternion.setFromUnitVectors(defaultUp, normal);
+      groupPoint.quaternion.copy(quaternion);
+
       groupPoint.position.set(pos.x, pos.y, pos.z);
 
       this.group.add(groupPoint);
@@ -298,7 +324,9 @@ export default {
       let time = this.clock.getDelta();
       this.group.rotateY((time * Math.PI) / 8);
       // console.log(time)
-      this.mixer.update(time);
+      if (this.mixer) {
+        this.mixer.update(time);
+      }
     }
   }
 };
